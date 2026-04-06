@@ -21,7 +21,7 @@ export default function AboutSection() {
         >
           <span className="text-primary font-medium mb-2 block">Tentang Saya</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Mengenal Lebih Dekat
+            know me better
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -57,15 +57,14 @@ export default function AboutSection() {
               Passionate Developer &amp; Creator
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Saya adalah seorang Fullstack Web Developer dengan passion yang kuat dalam menciptakan 
-              solusi digital yang inovatif. Dengan pengalaman lebih dari 5 tahun, saya telah 
-              membantu berbagai klien dan perusahaan dalam mewujudkan ide-ide mereka menjadi 
-              aplikasi web yang powerful dan user-friendly.
+              My name is Gebrina Hikmah. I was born in Banda Aceh on December 27, 2009. My hobby is reading. I ama a student who has great interest in mathematics. I enjoy learning new things,especially those related to self-development and creativity. 
+              
+      
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Selain coding, saya juga aktif sebagai Content Creator, berbagi pengetahuan 
-              tentang pemrograman dan teknologi melalui berbagai platform. Saya percaya bahwa 
-              berbagi ilmu adalah cara terbaik untuk terus belajar dan berkembang.
+              If i had to describe my self in threee words: Curious, creative, and constanly learning. I believe every day is an opportunity to become a better version of ourselves. So, i'm not just here to introduce myself, but also to grow together.
+          
+              
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               {stats.map((stat, index) => (
