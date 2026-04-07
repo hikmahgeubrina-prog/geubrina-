@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
@@ -8,7 +7,7 @@ interface NavbarProps {
   toggleTheme: () => void;
 }
 
-export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
+export default function Navbar({ isDark, toggleTheme }:  NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,6 +15,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -29,7 +29,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement | null;
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -41,87 +41,52 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-strong shadow-card' : 'bg-transparent'
+        isScrolled ? 'shadow-lg bg-white' : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <motion.a
+      <div className="px-4">
+        <div className="flex items-center justify-between h-16">
+
+          {/* Logo */}
+          <a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('#home');
             }}
-            className="font-display text-xl md:text-2xl font-bold text-gradient cursor-pointer"
-            whileHover={{ scale: 1.05 }}
+            className="text-xl font-bold cursor-pointer"
           >
-            &lt;Dev /&gt;
-          </motion.a>
+            Gebrinaaa
+          </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-6">
             {navItems.map((item) => (
-              <motion.a
+              <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium cursor-pointer"
-                whileHover={{ y: -2 }}
+                className="cursor-pointer hover:underline"
               >
                 {item.label}
-              </motion.a>
+              </a>
             ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              <AnimatePresence mode="wait">
-                {isDark ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                  >
-                    <Sun className="h-5 w-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                  >
-                    <Moon className="h-5 w-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+          {/* Mobile */}
+          <div className="flex gap-2 md:hidden">
+            <button onClick={toggleTheme}>
+              {isDark ? <Sun /> : <Moon />}
+            </button>
+
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
+
         </div>
       </div>
 
@@ -132,9 +97,9 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-border"
+            className="bg-white shadow-md"
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <div className="px-4 py-4 flex flex-col gap-4">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -143,7 +108,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                  className="cursor-pointer"
                 >
                   {item.label}
                 </a>
