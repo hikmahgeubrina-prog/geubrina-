@@ -7,7 +7,7 @@ interface NavbarProps {
   toggleTheme: () => void;
 }
 
-export default function Navbar({ isDark, toggleTheme }:  NavbarProps) {
+export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -41,25 +41,27 @@ export default function Navbar({ isDark, toggleTheme }:  NavbarProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg bg-white' : 'bg-transparent'
+        isScrolled
+          ? 'bg-[#0a192f]/80 backdrop-blur border-b border-cyan-400/10 shadow-lg'
+          : 'bg-transparent'
       }`}
     >
       <div className="px-4">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
+          {/* LOGO */}
           <a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('#home');
             }}
-            className="text-xl font-bold cursor-pointer"
+            className="text-xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
           >
-            Gebrinaaa
+            Gebrina⚡
           </a>
 
-          {/* Desktop Menu */}
+          {/* DESKTOP MENU */}
           <div className="hidden md:flex gap-6">
             {navItems.map((item) => (
               <a
@@ -69,35 +71,47 @@ export default function Navbar({ isDark, toggleTheme }:  NavbarProps) {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="cursor-pointer hover:underline"
+                className="relative text-cyan-300 hover:text-cyan-200 transition duration-300 group"
               >
                 {item.label}
+
+                {/* underline lightning */}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full shadow-[0_0_8px_rgba(34,211,238,0.9)]" />
               </a>
             ))}
           </div>
 
-          {/* Mobile */}
-          <div className="flex gap-2 md:hidden">
-            <button onClick={toggleTheme}>
-              {isDark ? <Sun /> : <Moon />}
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-2">
+
+            {/* THEME BUTTON */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-white/5 hover:bg-cyan-400/10 text-cyan-300 transition shadow-[0_0_8px_rgba(34,211,238,0.3)]"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {/* MOBILE MENU */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-full bg-white/5 hover:bg-cyan-400/10 text-cyan-300 md:hidden"
+            >
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
-          </div>
 
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-white shadow-md"
+            className="bg-[#0a192f] border-t border-cyan-400/10"
           >
             <div className="px-4 py-4 flex flex-col gap-4">
               {navItems.map((item) => (
@@ -108,7 +122,7 @@ export default function Navbar({ isDark, toggleTheme }:  NavbarProps) {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="cursor-pointer"
+                  className="text-cyan-300 hover:text-cyan-200 transition"
                 >
                   {item.label}
                 </a>

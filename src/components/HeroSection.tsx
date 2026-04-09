@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Youtube, Instagram } from "lucide-react";
+import { ArrowDown, Github, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThreeScene from "./ThreeScene";
 
 export default function HeroSection() {
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     const element = document.querySelector(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -12,10 +12,16 @@ export default function HeroSection() {
   };
 
   const socials = [
-    { icon: Github, href: "https://github.com/hikmahgeubrina-prog", label: "GitHub" },
-    // { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-    // { icon: Youtube, href: "https://youtube.com/", label: "YouTube" },
-    { icon: Instagram, href: "https://www.instagram.com/gebrinaahkmh_?igsh=MThyaG92bG43N3BudA==", label: "Instagram" },
+    {
+      icon: Github,
+      href: "https://github.com/hikmahgeubrina-prog",
+      label: "GitHub",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/gebrinaahkmh_",
+      label: "Instagram",
+    },
   ];
 
   return (
@@ -24,7 +30,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden 
       bg-gradient-to-br from-[#020617] via-[#020c2b] to-[#001233]"
     >
-      {/* Background */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute w-full h-full bg-[radial-gradient(circle_at_top,rgba(0,140,255,0.15),transparent_60%)]" />
         <div className="absolute inset-0 animate-pulse opacity-20 bg-[linear-gradient(120deg,transparent,rgba(0,170,255,0.4),transparent)] blur-2xl" />
@@ -32,29 +38,35 @@ export default function HeroSection() {
 
       <ThreeScene />
 
+      {/* CONTENT */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
 
-          {/* FOTO PROFIL */}
+          {/* FOTO */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="flex-shrink-0"
           >
-            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden 
-              border-4 border-blue-400/40 shadow-[0_0_25px_rgba(0,140,255,0.8)]">
-              
+            <div
+             className="w-[220px] h-[220px] 
+                    sm:w-[260px] sm:h-[260px]
+                    md:w-[320px] md:h-[320px]
+                    lg:w-[380px] lg:h-[380px] 
+              border-4 border-blue-400/40 
+              shadow-[0_0_25px_rgba(0,140,255,0.8)]"
+            >
               <img
-                src="/WhatsApp Image 2026-04-09 at 17.53.22.jpeg" // ganti dengan foto kamu
+                src="/WhatsApp Image 2026-04-09 at 17.53.22.jpeg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
 
-          {/* TEXT CONTENT */}
-          <div className="text-center md:text-left max-w-2xl">
+          {/* TEXT */}
+          <div className="text-center md:text-left max-w-lg md:pl-6">
 
             {/* Badge */}
             <motion.span
@@ -68,20 +80,19 @@ export default function HeroSection() {
               👋 Hello! Come get to know me
             </motion.span>
 
-            {/* Title */}
+            {/* TITLE */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="font-display text-4xl md:text-6xl font-bold mb-6 text-white"
+              className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
             >
-              Come with me <br />
               <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 text-transparent bg-clip-text">
-                & Explore my world
+                geubrina hikmah
               </span>
             </motion.h1>
 
-            {/* Description */}
+            {/* DESC */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -92,7 +103,7 @@ export default function HeroSection() {
               and discover more about me.
             </motion.p>
 
-            {/* Buttons */}
+            {/* BUTTON */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -106,7 +117,7 @@ export default function HeroSection() {
                 shadow-[0_0_20px_rgba(0,140,255,0.8)] hover:scale-105 transition"
                 onClick={() => scrollTo("#projects")}
               >
-                Lihat Projects
+                View Projects
               </Button>
 
               <Button
@@ -116,11 +127,11 @@ export default function HeroSection() {
                 hover:bg-blue-500/10"
                 onClick={() => scrollTo("#contact")}
               >
-                Hubungi Saya
+                Contact Me
               </Button>
             </motion.div>
 
-            {/* Social */}
+            {/* SOCIAL */}
             <div className="flex gap-5 justify-center md:justify-start">
               {socials.map((social) => {
                 const Icon = social.icon;
@@ -142,7 +153,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll */}
+      {/* SCROLL */}
       <button
         onClick={() => scrollTo("#about")}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full 

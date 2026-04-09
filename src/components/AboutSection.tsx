@@ -9,12 +9,7 @@ export default function AboutSection() {
     {
       title: "Who am I?",
       content:
-        "I am a student who loves learning new things, especially mathematics and creativity.",
-    },
-    {
-      title: "My Hobby",
-      content:
-        "I really enjoy reading books and exploring knowledge that helps me grow every day.",
+        "I am a student who loves learning new things, especially mathematics and creativity. I really enjoy reading books and exploring knowledge that helps me grow every day.",
     },
     {
       title: "My Goals",
@@ -74,7 +69,7 @@ export default function AboutSection() {
               {/* FOTO */}
               <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl">
                 <img
-                  src="/profile.jpg"
+                  src="/aauu.jpeg"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
