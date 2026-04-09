@@ -1,11 +1,37 @@
-import { motion } from "framer-motion";
-import { Code2, Video } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Code2, Video, ChevronDown } from "lucide-react";
 
 export default function AboutSection() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   const stats = [
     { icon: Code2, value: "50+", label: "my fav book" },
     { icon: Video, value: "100+", label: "achievment" },
   ];
+
+  // accordion data
+  const accordionData = [
+    {
+      title: "Who am I?",
+      content:
+        "I am a student who loves learning new things, especially mathematics and creativity.",
+    },
+    {
+      title: "My Hobby",
+      content:
+        "I really enjoy reading books and exploring knowledge that helps me grow every day.",
+    },
+    {
+      title: "My Goals",
+      content:
+        "To keep learning, improve myself, and achieve meaningful success in the future.",
+    },
+  ];
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <section
@@ -47,14 +73,12 @@ export default function AboutSection() {
           >
             <div className="relative group">
               
-              {/* glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-20 group-hover:opacity-40 transition"></div>
 
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 shadow-2xl flex items-center justify-center">
                 <span className="text-8xl">👨‍💻</span>
               </div>
 
-              {/* floating badge */}
               <div className="absolute -bottom-6 -right-6 p-4 bg-gray-900 rounded-xl shadow-lg border border-gray-700 backdrop-blur-md">
                 <p className="font-bold text-2xl text-blue-400">5+ Tahun</p>
                 <p className="text-sm text-gray-400">Pengalaman</p>
@@ -74,18 +98,11 @@ export default function AboutSection() {
             </h3>
 
             <p className="text-gray-400 leading-relaxed">
-              𝙈𝙮 𝙣𝙖𝙢𝙚 𝙞𝙨 <span className="text-blue-400">𝙂𝙚𝙗𝙧𝙞𝙣𝙖 𝙃𝙞𝙠𝙢𝙖𝙝</span>. 
-              𝙄 𝙬𝙖𝙨 𝙗𝙤𝙧𝙣 𝙞𝙣 𝘽𝙖𝙣𝙙𝙖 𝘼𝙘𝙚𝙝 𝙤𝙣 𝘿𝙚𝙘𝙚𝙢𝙗𝙚𝙧 27, 2009. 𝙈𝙮 𝙝𝙤𝙗𝙗𝙮 𝙞𝙨 𝙧𝙚𝙖𝙙𝙞𝙣𝙜.               
-              𝙄 𝙖𝙢 𝙖 𝙨𝙩𝙪𝙙𝙚𝙣𝙩 𝙬𝙝𝙤 𝙝𝙖𝙨 𝙖 𝙜𝙧𝙚𝙖𝙩 𝙞𝙣𝙩𝙚𝙧𝙚𝙨𝙩 𝙞𝙣 𝙢𝙖𝙩𝙝𝙚𝙢𝙖𝙩𝙞𝙘𝙨.               
-              𝘾𝙪𝙧𝙧𝙚𝙣𝙩𝙡𝙮, 𝙄 𝙖𝙢 𝙨𝙩𝙪𝙙𝙮𝙞𝙣𝙜 𝙖𝙩 𝙈𝘼𝙉 𝙈𝙤𝙙𝙚𝙡 𝘽𝙖𝙣𝙙𝙖 𝘼𝙘𝙚𝙝.
+              My name is <span className="text-blue-400">Gebrina Hikmah</span>. 
+              I am a student with a strong interest in mathematics and learning.
             </p>
 
-            <p className="text-gray-400 leading-relaxed">
-              <span className="text-blue-400">
-              𝙄𝙛 𝙞 𝙝𝙖𝙙 𝙩𝙤 𝙙𝙚𝙨𝙘𝙧𝙞𝙗𝙚 𝙢𝙮 𝙨𝙚𝙡𝙛 𝙞𝙣 𝙩𝙝𝙧𝙚𝙚𝙚 𝙬𝙤𝙧𝙙𝙨: 𝘾𝙪𝙧𝙞𝙤𝙪𝙨, 𝙘𝙧𝙚𝙖𝙩𝙞𝙫𝙚, 𝙖𝙣𝙙 𝙘𝙤𝙣𝙨𝙩𝙖𝙣𝙡𝙮 𝙡𝙚𝙖𝙧𝙣𝙞𝙣𝙜. 𝙄 𝙗𝙚𝙡𝙞𝙚𝙫𝙚 𝙚𝙫𝙚𝙧𝙮 𝙙𝙖𝙮 𝙞𝙨 𝙖𝙣 𝙤𝙥𝙥𝙤𝙧𝙩𝙪𝙣𝙞𝙩𝙮 𝙩𝙤 𝙗𝙚𝙘𝙤𝙢𝙚 𝙖 𝙗𝙚𝙩𝙩𝙚𝙧 𝙫𝙚𝙧𝙨𝙞𝙤𝙣 𝙤𝙛 𝙤𝙪𝙧𝙨𝙚𝙡𝙫𝙚𝙨. 𝙎𝙤, 𝙞'𝙢 𝙣𝙤𝙩 𝙟𝙪𝙨𝙩 𝙝𝙚𝙧𝙚 𝙩𝙤 𝙞𝙣𝙩𝙧𝙤𝙙𝙪𝙘𝙚 𝙢𝙮𝙨𝙚𝙡𝙛, 𝙗𝙪𝙩 𝙖𝙡𝙨𝙤 𝙩𝙤 𝙜𝙧𝙤𝙬 𝙩𝙤𝙜𝙚𝙩𝙝𝙚𝙧..              </span>
-            </p>
-
-            {/* STATS (2 CARD SAJA) */}
+            {/* STATS */}
             <div className="grid grid-cols-2 gap-4 pt-6">
               {stats.map((stat, index) => (
                 <motion.div
@@ -99,6 +116,44 @@ export default function AboutSection() {
                   <p className="text-2xl font-bold">{stat.value}</p>
                   <p className="text-sm text-gray-400">{stat.label}</p>
                 </motion.div>
+              ))}
+            </div>
+
+            {/* ACCORDION */}
+            <div className="pt-8 space-y-4">
+              {accordionData.map((item, index) => (
+                <div
+                  key={index}
+                  className="border border-gray-800 rounded-xl overflow-hidden"
+                >
+                  <button
+                    onClick={() => toggleAccordion(index)}
+                    className="w-full flex justify-between items-center p-4 bg-gray-900 hover:bg-gray-800 transition"
+                  >
+                    <span className="text-left font-medium">
+                      {item.title}
+                    </span>
+                    <ChevronDown
+                      className={`transition-transform ${
+                        activeIndex === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="px-4 pb-4 text-gray-400"
+                      >
+                        {item.content}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
             </div>
 
