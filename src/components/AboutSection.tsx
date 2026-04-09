@@ -1,16 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Code2, Video, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function AboutSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const stats = [
-    { icon: Code2, value: "50+", label: "my fav book" },
-    { icon: Video, value: "100+", label: "achievment" },
-  ];
-
-  // accordion data
   const accordionData = [
     {
       title: "Who am I?",
@@ -38,7 +32,7 @@ export default function AboutSection() {
       id="about"
       className="relative py-20 md:py-32 bg-gray-950 text-gray-200 overflow-hidden"
     >
-      {/* 🔵 LIGHTING EFFECT */}
+      {/* LIGHT EFFECT */}
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-blue-500 opacity-20 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-purple-500 opacity-20 blur-[120px] rounded-full"></div>
 
@@ -65,24 +59,27 @@ export default function AboutSection() {
         {/* CONTENT */}
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           
-          {/* IMAGE */}
+          {/* FOTO PROFIL */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
+            className="flex justify-center"
           >
             <div className="relative group">
               
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-20 group-hover:opacity-40 transition"></div>
+              {/* glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 blur-2xl opacity-30 group-hover:opacity-50 transition rounded-full"></div>
 
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 shadow-2xl flex items-center justify-center">
-                <span className="text-8xl">👨‍💻</span>
+              {/* FOTO */}
+              <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl">
+                <img
+                  src="/profile.jpg"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <div className="absolute -bottom-6 -right-6 p-4 bg-gray-900 rounded-xl shadow-lg border border-gray-700 backdrop-blur-md">
-                <p className="font-bold text-2xl text-blue-400">5+ Tahun</p>
-                <p className="text-sm text-gray-400">Pengalaman</p>
-              </div>
             </div>
           </motion.div>
 
@@ -102,25 +99,8 @@ export default function AboutSection() {
               I am a student with a strong interest in mathematics and learning.
             </p>
 
-            {/* STATS */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.15 }}
-                  className="p-5 bg-gray-900 rounded-xl text-center border border-gray-800 hover:border-blue-500 transition group"
-                >
-                  <stat.icon className="h-6 w-6 text-blue-400 mx-auto mb-2 group-hover:scale-110 transition" />
-                  <p className="text-2xl font-bold">{stat.value}</p>
-                  <p className="text-sm text-gray-400">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-
             {/* ACCORDION */}
-            <div className="pt-8 space-y-4">
+            <div className="pt-6 space-y-4">
               {accordionData.map((item, index) => (
                 <div
                   key={index}
