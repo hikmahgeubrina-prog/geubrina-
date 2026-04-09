@@ -58,7 +58,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
             }}
             className="text-xl font-bold tracking-wide bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
           >
-            Gebrina⚡
+            Gebrina
           </a>
 
           {/* DESKTOP MENU */}
